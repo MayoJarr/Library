@@ -48,6 +48,7 @@ const authorValue = document.querySelector('#author');
 const pagesValue = document.querySelector('#pages');
 const read = document.querySelector('#read');
 const close = document.querySelector('.close');
+const covers = document.querySelector('.covers');
 
 function remove(index) {
   // console.log(myLibrary[index].name);
@@ -86,7 +87,7 @@ function displayNew() {
 
   title.textContent = myLibrary[num].title;
   author.textContent = myLibrary[num].author;
-  pages.textContent = myLibrary[num].pages;
+  pages.textContent = myLibrary[num].pages + ' pages';
   isRead.textContent = is;
 
   content.appendChild(bookCard);
@@ -97,6 +98,10 @@ function displayNew() {
   bookCard.appendChild(removeButton);
   removeButton.addEventListener('click', () => remove(bookCard.dataset.index));
   isRead.addEventListener('click', () => myLibrary[bookCard.dataset.index].changeStatus(bookCard.dataset.index));
+  covers.addEventListener('click', () => {
+    bookCard.classList.remove('coverStyle');
+    bookCard.classList.toggle('coverStyle');
+  });
 }
 function showMenu() {
   menu.style.cssText = 'display: block;';
