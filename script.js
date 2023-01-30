@@ -49,6 +49,7 @@ const pagesValue = document.querySelector('#pages');
 const read = document.querySelector('#read');
 const close = document.querySelector('.close');
 const covers = document.querySelector('.covers');
+const resetCovers = document.querySelector('.resetCovers');
 
 function remove(index) {
   // console.log(myLibrary[index].name);
@@ -99,8 +100,10 @@ function displayNew() {
   removeButton.addEventListener('click', () => remove(bookCard.dataset.index));
   isRead.addEventListener('click', () => myLibrary[bookCard.dataset.index].changeStatus(bookCard.dataset.index));
   covers.addEventListener('click', () => {
-    bookCard.classList.remove('coverStyle');
     bookCard.classList.toggle('coverStyle');
+  resetCovers.addEventListener('click', () => {
+    bookCard.classList.remove()
+  })
   });
 }
 function showMenu() {

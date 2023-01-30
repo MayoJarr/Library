@@ -43,7 +43,7 @@ body {
     display: grid;
     grid-template: 1fr / 1fr 1fr;
     grid-gap: 100px;
-    margin: 0px 200px;
+    margin: 0px 10%;
 }
 .block {
     background: #222;
@@ -75,10 +75,29 @@ body {
 }
 .me {
     background: #222;
-    margin: 0px 200px;
+    margin: 0px 10%;
     margin-top: 200px;
     height: 60vh;
     border-radius: 20px;
     padding: 50px;
     font-size: 20px;
+}
+@media only screen and (max-width: 1000px){
+    .me {
+        margin: 0px 5%;
+        margin-top: 100px;
+        height: 80vh;
+    }
+    .about {
+        display: flex;
+        flex-direction: column;
+        margin: 0px 5%;
+        height: 200vh;
+    }
+    .aboutText{
+        height: 80vh;
+    }
+    .books{
+        height: 80vh;
+    }
 }
