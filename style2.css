@@ -55,6 +55,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: 0.6s;
+    opacity: 0;
+}
+.itemA{
+    transform: scale(1);
+    opacity: 1;
 }
 .menu{
     position: absolute;
@@ -145,5 +151,9 @@
 .coverStyle {
     background-image: url(dracula.png);
     background-size: cover;
+}
+.removeA{
+    transform: scale(0);
+    opacity: 0;
 }
 

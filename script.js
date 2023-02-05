@@ -11,22 +11,31 @@ const myLibrary = [
   // },
 ];
 
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
+// function Book(title, author, pages, isRead) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.isRead = isRead;
+// }
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
 }
 
 Book.prototype.changeStatus = function (index) {
-  const changedStatus = document.querySelector(`[data-index-of-read="${index}"]`);
+  const changedStatus = document.querySelector(
+    `[data-index-of-read="${index}"]`,
+  );
   const readDiv = document.querySelector(`[data-index3="${index}"]`);
   if (this.isRead === false) {
     this.isRead = true;
     changedStatus.textContent = 'read';
     readDiv.style.cssText = 'background: green;';
-  }
-  else if (this.isRead === true) {
+  } else if (this.isRead === true) {
     this.isRead = false;
     changedStatus.textContent = 'not read';
     readDiv.style.cssText = 'background: red;';
@@ -53,9 +62,12 @@ const resetCovers = document.querySelector('.resetCovers');
 
 function remove(index) {
   // console.log(myLibrary[index].name);
-  myLibrary.splice(index, 1);
   const removeElement = document.querySelector(`[data-index="${index}"]`);
-  removeElement.remove();
+  removeElement.classList.add('removeA');
+  myLibrary.splice(index, 1);
+  setTimeout(() => {
+    removeElement.remove();
+  }, '450');
 }
 
 function displayNew() {
@@ -70,6 +82,7 @@ function displayNew() {
   const isRead = document.createElement('div');
   const removeButton = document.createElement('button');
   bookCard.classList.add('item');
+  bookCard.classList.add('itemA');
   bookCard.dataset.index = [num];
   isRead.dataset.indexOfRead = [num];
   isRead.dataset.index3 = [num];
@@ -80,15 +93,14 @@ function displayNew() {
   if (myLibrary[num].isRead === true) {
     is = 'read';
     isRead.style.cssText = 'background: green';
-  }
-  else if (myLibrary[num].isRead === false) {
+  } else if (myLibrary[num].isRead === false) {
     is = 'not read';
     isRead.style.cssText = 'background: red;';
   }
 
   title.textContent = myLibrary[num].title;
   author.textContent = myLibrary[num].author;
-  pages.textContent = myLibrary[num].pages + ' pages';
+  pages.textContent = `${myLibrary[num].pages} pages`;
   isRead.textContent = is;
 
   content.appendChild(bookCard);
@@ -101,10 +113,13 @@ function displayNew() {
   isRead.addEventListener('click', () => myLibrary[bookCard.dataset.index].changeStatus(bookCard.dataset.index));
   covers.addEventListener('click', () => {
     bookCard.classList.toggle('coverStyle');
-  resetCovers.addEventListener('click', () => {
-    bookCard.classList.remove()
-  })
+    resetCovers.addEventListener('click', () => {
+      bookCard.classList.remove();
+    });
   });
+  setTimeout(() => {
+    bookCard.classList.add('itemA');
+  }, 450);
 }
 function showMenu() {
   menu.style.cssText = 'display: block;';
